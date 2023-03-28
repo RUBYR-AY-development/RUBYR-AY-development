@@ -1,6 +1,6 @@
 /*
 * simple binary tree i made (for practice)
-* has infinite children and simple search func
+* has infinite children and simple search func and delete
 */
 
 #include <iostream>
@@ -18,6 +18,11 @@ template <typename T> struct node
     }
 
     node(T data) { this->data = data; }
+    ~node()
+    {
+        for (node<T>* x : children)
+            x->_delete();
+    }
 
     bool search(T request) // searches itself and children for it
     {
@@ -26,6 +31,11 @@ template <typename T> struct node
         else
             for (node<T>* x : children)
                 return x->search(request);
+    }
+
+    void _delete()
+    {
+        delete this;
     }
 };
 
@@ -43,5 +53,6 @@ int main()
     else
         std::cout << "saddening";
 
+    root->_delete();
     return 0;
 }
