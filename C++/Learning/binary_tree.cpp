@@ -21,7 +21,7 @@ template <typename T> struct node
     ~node()
     {
         for (node<T>* x : children)
-            x->_delete();
+            delete x;
     }
 
     bool search(T request) // searches itself and children for it
@@ -31,11 +31,6 @@ template <typename T> struct node
         else
             for (node<T>* x : children)
                 return x->search(request);
-    }
-
-    void _delete()
-    {
-        delete this;
     }
 };
 
@@ -53,6 +48,6 @@ int main()
     else
         std::cout << "saddening";
 
-    root->_delete();
+    delete root;
     return 0;
 }
