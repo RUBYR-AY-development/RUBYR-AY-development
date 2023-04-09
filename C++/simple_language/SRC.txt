@@ -1,0 +1,15 @@
+var A : Int = 2
+var B : Int = A + 2
+
+// INCREMENT ONE
+A++
+// DECREMENT ONE
+A--
+
+struct some_struct {
+   var C : Int
+}
+
+if (A <= B) // EZ COMMENT
+   display("HELLO")
+end
